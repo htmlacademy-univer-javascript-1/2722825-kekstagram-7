@@ -5,7 +5,6 @@ function lengthCheck(line, maxLength) {
 }
 
 // 2. является ли строка палиндромом
-
 function palindromeCheck(line) {
   const trueLine =  line.replaceAll(' ','').toLowerCase();
   let reversed = '';
