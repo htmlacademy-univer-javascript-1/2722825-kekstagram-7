@@ -28,3 +28,17 @@ function extractDigits(line) {
 
   return parseInt(digits, 10);
 }
+
+const timeToMinutes = (time) => {
+  const [hours, minutes] = time.split(':').map(Number);
+  return hours * 60 + minutes;
+};
+
+const isMeetingInWorkDay = (workStart, workEnd, meetingStart, meetingDuration) => {
+  const workStartMin = timeToMinutes(workStart);
+  const workEndMin = timeToMinutes(workEnd);
+  const meetingStartMin = timeToMinutes(meetingStart);
+  const meetingEndMin = meetingStartMin + meetingDuration;
+
+  return meetingStartMin >= workStartMin && meetingEndMin <= workEndMin;
+};
