@@ -1,3 +1,6 @@
+import { resetEffects } from './effects.js';
+import { initScale, resetScale } from './scale.js';
+
 const uploadForm = document.querySelector('.img-upload__form');
 const uploadOverlay = document.querySelector('.img-upload__overlay');
 const uploadFileInput = document.querySelector('.img-upload__input');
@@ -60,12 +63,16 @@ const closeUploadForm = () => {
   uploadFileInput.value = '';
   textHashtags.value = '';
   textDescription.value = '';
+  resetScale();
+  resetEffects();
+  pristine.reset();
   pristine.reset();
 };
 
 const openUploadForm = () => {
   uploadOverlay.classList.remove('hidden');
   document.body.classList.add('modal-open');
+  initScale();
   document.addEventListener('keydown', onEscKeyDown);
 };
 
