@@ -6,21 +6,33 @@ const textHashtags = document.querySelector('.text__hashtags');
 const textDescription = document.querySelector('.text__description');
 
 const validateHashtag = (value) => {
-  if (!value) return true;
+  if (!value) {
+    return true;
+  }
+
   const hashtags = value.toLowerCase().split(' ').filter(Boolean);
   const regex = /^#[a-zа-яё0-9]{1,19}$/i;
+
   return hashtags.every((tag) => regex.test(tag));
 };
 
 const validateHashtagCount = (value) => {
-  if (!value) return true;
+  if (!value) {
+    return true;
+  }
+
   const hashtags = value.split(' ').filter(Boolean);
+
   return hashtags.length <= 5;
 };
 
 const validateHashtagUnique = (value) => {
-  if (!value) return true;
+  if (!value) {
+    return true;
+  }
+
   const hashtags = value.toLowerCase().split(' ').filter(Boolean);
+
   return new Set(hashtags).size === hashtags.length;
 };
 
@@ -35,16 +47,16 @@ pristine.addValidator(textHashtags, validateHashtagUnique, 'Хэштеги не 
 
 uploadForm.addEventListener('submit', (evt) => {
   const isValid = pristine.validate();
-  
+
   if (!isValid) {
-    evt.preventDefault(); 
+    evt.preventDefault();
   }
 });
 
 const closeUploadForm = () => {
   uploadOverlay.classList.add('hidden');
   document.body.classList.remove('modal-open');
-  
+
   uploadFileInput.value = '';
   textHashtags.value = '';
   textDescription.value = '';
