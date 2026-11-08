@@ -2,6 +2,7 @@
 
 import { createPhotos } from './photo-generator.js';
 import { renderThumbnails } from './thumbnails.js';
+import './upload-form.js';
 
 const photos = createPhotos();
 
